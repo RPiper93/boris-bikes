@@ -1,6 +1,9 @@
 require './lib/bike.rb'
 
 class DockingStation
+
+  DEFAULT_CAPACITY = 20
+
   def initialize
     @bikes = []
   end
@@ -20,7 +23,7 @@ class DockingStation
   private
 
   def full?
-    if @bikes.length > 19
+    if @bikes.length >= DEFAULT_CAPACITY
       true
     end
   end
