@@ -22,4 +22,13 @@ describe DockingStation do
 		bike = Bike.new
 		expect(subject.dock(bike)).to eq bike
 	end
+
+	it "can't dock more than one bike" do
+		station = subject
+    bike = Bike.new
+    station.dock(bike)
+    bike_2 = Bike.new
+    expect {station.dock(bike_2)}.to raise_error "Docking Station Full"
+  end
+
 end
