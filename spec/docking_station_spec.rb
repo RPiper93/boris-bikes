@@ -43,5 +43,19 @@ describe DockingStation do
   it 'capacity returns 20 if no argument given' do
     expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
+  
+  it 'does not release a broken bike' do
+    bike.report_broken
+    station.dock(bike)
+    expect { station.release_bike }.to raise_error "No bikes available"
+  end
+  
+  it 'returns working bike if one is docked' do
+    station.dock(bike)
+    bike_2 = Bike.new
+    bike_2.report_broken
+    station.dock(bike_2)
+    expect(station.release_bike).to eq bike 
+  end
 
 end
