@@ -9,4 +9,14 @@ describe 'docks a certain number of bikes' do
   end
 end
 
+describe 'user can set capacity' do
+  it 'sets capacity' do
+    docking_station = DockingStation.new(15)
+    expect(docking_station.capacity).to eq 15
+  end
 
+  it 'has a default capacity' do
+    docking_station = DockingStation.new
+    expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+end
