@@ -2,11 +2,18 @@ require 'docking_station'
 
 describe DockingStation do
 	it {is_expected.to respond_to :release_bike}
-	it "releases working bike" do
-		bike = subject.release_bike
-		expect(bike).to be_working
+
+	it "doesn't release bike when there isn't one" do
+		expect {subject.release_bike}.to raise_error 'No bikes available'
 	end
-	
+
+	it "releases bike" do
+		new_bike = Bike.new
+		subject.dock(new_bike)
+		bike = subject.release_bike
+		expect(bike).to eq new_bike
+	end
+
 	it "return bike has one argument" do
 		expect(subject).to respond_to(:dock).with(1).argument
 	end
