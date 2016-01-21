@@ -2,7 +2,7 @@ require 'docking_station'
 
 describe DockingStation do
   subject(:station) { DockingStation.new }
-  let(:bike) { Bike.new }
+  let(:bike) { double(:bike) }
 
 	it {is_expected.to respond_to :release_bike}
 
@@ -52,7 +52,7 @@ describe DockingStation do
   
   it 'returns working bike if one is docked' do
     station.dock(bike)
-    bike_2 = Bike.new
+    bike_2 = double(:bike)
     bike_2.report_broken
     station.dock(bike_2)
     expect(station.release_bike).to eq bike 
