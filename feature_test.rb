@@ -1,13 +1,12 @@
 require './lib/docking_station.rb'
 require './lib/bike.rb'
 
-station = DockingStation.new
-puts "station = #{station}"
-bike = Bike.new
-puts "bike = #{bike}"
-puts "station.dock(bike) = #{station.dock(bike)}"
-puts "station.bikes = #{station.bike}"
+describe 'docks a certain number of bikes' do
+  it 'docks twenty bikes' do
+    station = DockingStation.new
+    20.times {station.dock(Bike.new)}
+    expect(station.bikes.length).to eq 20
+  end
+end
 
-bike_2 = Bike.new
-puts "bike_2 = #{bike_2}"
-puts "station.dock(bike_2) = #{station.dock(bike_2)}"
+

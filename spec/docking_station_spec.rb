@@ -18,11 +18,6 @@ describe DockingStation do
 		expect(subject).to respond_to(:dock).with(1).argument
 	end
 
-	it "docks a bike" do
-		bike = Bike.new
-		expect(subject.dock(bike)).to eq bike
-	end
-
   it "can dock twenty bikes" do
     station = subject
     20.times {station.dock(Bike.new)}
