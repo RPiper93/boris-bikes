@@ -6,7 +6,7 @@ puts "station = #{station}"
 bike = Bike.new
 puts "bike = #{bike}"
 puts "station.dock(bike) = #{station.dock(bike)}"
-puts "station.bike = #{station.bike}"
+puts "station.bikes = #{station.bike}"
 
 bike_2 = Bike.new
 puts "bike_2 = #{bike_2}"

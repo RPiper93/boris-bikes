@@ -1,19 +1,26 @@
 require './lib/bike.rb'
 
 class DockingStation
+  def initialize
+    @bikes = []
+  end
+
 	def release_bike
-    if @bike == nil
+    if @bikes == []
       raise 'No bikes available'
     else
-		  @bike
+		  @bikes.pop
     end
 	end
 
-	def dock(bike)
-    raise "Docking Station Full" unless @bike == nil
-		@bike = bike
-		bike
+	def dock(bikes)
+    if @bikes.length > 19
+      raise "Docking Station Full"
+    else
+  		@bikes << bikes
+	   	bikes
+    end
 	end
 
-	attr_reader :bike
+	attr_reader :bikes
 end

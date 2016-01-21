@@ -23,12 +23,16 @@ describe DockingStation do
 		expect(subject.dock(bike)).to eq bike
 	end
 
-	it "can't dock more than one bike" do
+  it "can dock twenty bikes" do
+    station = subject
+    20.times {station.dock(Bike.new)}
+    expect(station.bikes.length).to eq 20
+  end
+
+	it "can't dock more bikes when full" do
 		station = subject
-    bike = Bike.new
-    station.dock(bike)
-    bike_2 = Bike.new
-    expect {station.dock(bike_2)}.to raise_error "Docking Station Full"
+    20.times {station.dock(Bike.new)}
+    expect {station.dock(Bike.new)}.to raise_error "Docking Station Full"
   end
 
 end
