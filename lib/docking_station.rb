@@ -10,7 +10,6 @@ class DockingStation
   end
 
 	def release_bike
-    number_of_bikes = @bikes.length
       @bikes.each do |bike|
       if bike.working == true
         @bikes.delete(bike)
