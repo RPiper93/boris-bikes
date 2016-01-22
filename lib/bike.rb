@@ -1,5 +1,5 @@
 class Bike
-	def initialize
+  def initialize
     @working = true
   end
 
